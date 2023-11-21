@@ -1,0 +1,163 @@
+\documentclass[dvipdfmx,11pt]{jsarticle}
+\usepackage{tikz,ascmac,amsmath,amssymb,enumitem}
+\begin{document}
+\section*{2体系の運動}
+2つの物体が関わる運動を調べるとき、これまでは各物体ごとに分けて運動方程式を立てて議論を進めてきた。
+ここでは、2つの物体を一つのまとまり、すなわち{\bf 系}として考えたとき、どのような性質があるのかについて調べる。\\
+下図のように質量$m_1$,$m_2$の物体にそれぞれ外力$\vec{f_1}$,$\vec{f_2}$、内力(相互作用)$\vec{F}$,$-\vec{F}$が働く状況を考える。（内力は作用反作用の法則より逆向きで同じ大きさなので、このように設定することができる)
+\begin{figure}[h]
+    \begin{center}
+        \input{twoBodySystem.pdf_tex}
+    \end{center}
+\end{figure}
+\\このとき$m_1$,$m_2$の運動方程式は
+{\large
+\begin{eqnarray}
+    m_1\frac{d\vec{v_1}}{dt} = \vec{f_1} + \vec{F}
+    \\m_2\frac{d\vec{v_2}}{dt} = \vec{f_2} - \vec{F}
+\end{eqnarray}
+}
+となる。$(1)＋(2)$を考えると,
+{\large
+        \begin{eqnarray*}
+            m_1\frac{d\vec{v_1}}{dt}+m_2\frac{d\vec{v_2}}{dt}=\vec{f_1}+\vec{f_2}+\vec{F}-\vec{F}
+            \\\therefore\frac{d}{dt}(m_1\vec{v_1}+m_2\vec{v_2})=\vec{f_1}+\vec{f_2}
+        \end{eqnarray*}
+    }
+これは、系全体の運動量変化が外力により引き起こされることを表す。特に外力$\vec{0}$の場合には、系全体の運動量が変化せず一定であることを表す。
+\\次に、系全体の仕事とエネルギーの関係を調べるために、$(1)\cdot\vec{v_1}+(2)\cdot\vec{v_2}$を考えると、
+{\large
+\begin{equation*}
+    m_1\frac{d\vec{v_1}}{dt}\cdot\vec{v_1}+m_2\frac{d\vec{v_2}}{dt}\cdot\vec{v_2}=\vec{f_1}\cdot\vec{v_1}+\vec{f_2}\cdot\vec{v_2}+\vec{F}\cdot\vec{v_1}-\vec{F}\cdot\vec{v_2}
+\end{equation*}
+}
+\begin{screen}
+    {\large
+        \begin{eqnarray*}
+            \therefore\frac{d}{dt}\left(\frac{1}{2}m_1{v_1}^2+\frac{1}{2}m_2{v_2}^2\right)=\underbrace{\vec{f_1}\cdot\vec{v_1}+\vec{f_2}\cdot\vec{v_2}}_{外力の仕事(率)}+\underbrace{\vec{F}\cdot(\vec{v_1}-\vec{v_2})}_{内力の仕事(率)}
+        \end{eqnarray*}
+    }
+\end{screen}
+となる。外力の仕事(率)については今まで通り、各物体について、外力とその物体の速度ベクトルとの内積を考えればよい。内力の仕事(率)については、{\bf 相対速度ベクトルと内力ベクトルとの内積を考える}ことにより評価できることがわかる。
+\\\\なお、$\vec{F}・(\vec{v_1}-\vec{v_2})$は$m_2$に対する$m_1$の相対速度と$m_1$に働く内力の内積を表すが、$\vec{F}・(\vec{v_1}-\vec{v_2})\Leftrightarrow(-\vec{F})・(\vec{v_2}-\vec{v_1})$だから、いずれの物体の立場から考えても同様である。
+\subsection*{2体問題}
+ここまでは２体系全体で運動量と運動エネルギーがどのように評価できるか調べた。ここでは、さらに議論を進めて、$m_1$,$m_2$の運動を時間の関数として表すことを考える。このように相互作用を及ぼしながら運動する2物体の位置を時間の関数として表す問題を{\bf 2体問題}という。2体問題は、{\bf 系全体の運動を重心運動と相対運動に分けて考える}ことで解くことができる。ここではその方法について考えていく。
+
+\subsubsection*{重心運動}
+物体の重心運動を考えるために$(1)+(2)$式を考える。
+{\large
+\begin{eqnarray}
+    (1)+(2)\quad\Longleftrightarrow\quad(m_1+m_2)\frac{d^2}{dt^2}\left(\frac{m_1\vec{r_1}+m_2\vec{r_2}}{m_1+m_2}\right)=\vec{f_1}+\vec{f_2}
+\end{eqnarray}
+}
+$m_1+m_2$は2物体全体の質量、$\frac{m_1\vec{r_1}+m_2\vec{r_2}}{m_1+m_2}$は重心位置を表す。(3)式は2体系の重心の運動を記述する運動方程式({\bf 重心運動方程式})である。2物体に外力が働かない場合には、(3)式の右辺が$\vec{0}$となるので、初期条件を考えれば容易に重心の位置を時間の関数として表すことができる。
+
+\subsubsection*{相対運動}
+2物体の相対運動を考えるために$(1)\cdot\frac{1}{m_1}-(2)\cdot\frac{1}{m_2}$を考えると、
+{\large
+\begin{eqnarray}
+    \frac{d^2}{dt^2}\left(\vec{r_1}-\vec{r_2}\right)=\left(\frac{1}{m_1}+\frac{1}{m_2}\right)\vec{F}+\frac{\vec{f_1}}{m_1}-\frac{\vec{f_2}}{m_2}
+\end{eqnarray}
+}
+となる。物体間に働く内力は一般に$\vec{r_1}-\vec{r_2}$の関数である。(例:万有引力、クーロン力など)また、左辺においても$\vec{r_1}-\vec{r_2}$の形が現れているので、外力$\vec{0}$のときには$\vec{r_1}-\vec{r_2}$についての微分方程式として一般に解くことができる。(これが、上のような計算を考える理由になっている)ここで、$\frac{1}{m_1}+\frac{1}{m_2}$の部分に注目すると
+{\large
+\begin{equation*}
+    \frac{1}{m_1}+\frac{1}{m_2}\quad\Longleftrightarrow\quad\frac{m_1+m_2}{m_1m_2}
+\end{equation*}
+}
+であり、質量の逆数の次元を持つ物理量であることが分かる。そこで
+{\large
+\begin{equation*}
+    \mu=\frac{m_1m_2}{m_1+m_2}
+\end{equation*}
+}
+とおき、$(4)$式の両辺を$\mu$倍すると、
+{\large
+\begin{equation}
+    \frac{m_1m_2}{m_1+m_2}\frac{d^2}{dt^2}(\vec{r_1}-\vec{r_2}) = \vec{F}+\frac{m_2}{m_1+m_2}\vec{f_1}-\frac{m_1}{m_1+m_2}\vec{f_2}
+\end{equation}
+}
+となる。これは$m_1$,$m_2$の相対運動を記述する方程式であり、{\bf 相対運動方程式}と呼ばれる。また、上で導入した$\mu$は{\bf 換算質量}と呼ばれ、相対運動の仮想的な主体である。なお、相対運動方程式は2物体の相対運動を記述する方程式であるが、$m_2$上の観測者が$m_1$の運動を記述した運動方程式ではない。よって、{\bf $m_2$の加速度を考えて慣性力を導入するのは誤り}である。換算質量はあくまで相対運動の仮想的な主体であり、空間内の具体的な点として指定できない。
+
+\subsubsection*{2物体の運動エネルギー}
+運動エネルギーについても重心運動と相対運動に分離して議論することが  できる。
+{\large
+\begin{align}
+    \frac{1}{2}Mv_G^2+\frac{1}{2}\mu v_r^2\, & =\,\frac{1}{2}(m_1+m_2)\left|\frac{m_1\vec{v_1}+m_2\vec{v_2}}{m_1+m_2}\right|^2+\frac{1}{2}\frac{m_1m_2}{m_1+m_2}\left|\vec{v_1}-\vec{v_2}\right|^2\nonumber
+    \\\,&=\,\cdots\nonumber
+    \\\,&=\,\frac{1}{2}m_1v_1^2+\frac{1}{2}m_2v_2^2
+\end{align}
+}
+となる。ここで、$\frac{1}{2}Mv_G^2$を{\bf 重心運動エネルギー}、$\frac{1}{2}\mu v_r^2$を{\bf 相対運動エネルギー}という。このように2物体の運動エネルギーの和は、重心運動のみが関係する項と相対運動のみが関係する項に分けることができる。2体問題を重心運動と相対運動に分けて考えることは、エネルギーの議論においても有効であることが分かる。
+
+\subsubsection*{相対運動の別の考え方}
+2物体の相対運動を記述する方法として、相対運動方程式を考える以外に
+\begin{enumerate}[label=(\arabic*)]
+    \item 一方の物体上から、もう一方の物体の運動方程式を立てる
+    \item 重心系から2物体の運動方程式を立てる
+\end{enumerate}
+方法がある。以下ではこれらについて考えていく。
+
+\subsubsection*{(1)一方の物体上から、もう一方の物体の運動方程式を立てる}
+$m_2$上に固定した座標系で$m_1$の運動方程式を考えると、
+{\large
+\begin{align*}
+     & m_1\frac{d^2}{dt^2}\left(\vec{r_1}-\vec{r_2}\right)=\vec{f_1}+\vec{F}-\underset{\text{慣性力}}{\boxed{m_1\frac{d^2\vec{r_2}}{dt^2}}}
+    \\&\Leftrightarrow m_1\frac{d^2}{dt^2}\left(\vec{r_1}-\vec{r_2}\right)=\vec{f_1}+\vec{F}-m_1\left(\frac{\vec{f_2}}{m_2}-\frac{\vec{F}}{m_2}\right)
+    \\&\Leftrightarrow\frac{d^2}{dt^2}\left(\vec{r_1}-\vec{r_2}\right)=\frac{\vec{f_1}}{m_1}+\frac{\vec{F}}{m_1}-\left(\frac{\vec{f_2}}{m_2}-\frac{\vec{F}}{m_2}\right)
+    \\&\Leftrightarrow\frac{d^2}{dt^2}\left(\vec{r_1}-\vec{r_2}\right)=\left(\frac{1}{m_1}+\frac{1}{m_2}\right)\vec{F}+\frac{\vec{f_1}}{m_1}-\frac{\vec{f_2}}{m_2}
+    \\&\Leftrightarrow(5)
+\end{align*}
+}
+であり、相対運動方程式と数学的に同値な式になっていることが分かる。
+
+\subsubsection*{(2)重心系から2物体の運動方程式を立てる}
+我々が普段物体の運動を記述する際は、床に固定された慣性系である{\bf 実験室系}から現象を記述する。しかし、2物体の運動を調べる際には、2物体の重心に固定した座標系、すなわち{\bf 重心系}から物体の運動を記述すると、物体の重心運動の効果を除いて相対運動のみに注目して考えることができ、物体の運動の解析が簡単になることがある。
+\\実験室系での2物体の重心の位置を$\vec{r_G}$、重心系での$m_1$,$m_2$の位置をそれぞれ$\vec{R_1}$,$\vec{R_2}$とする。
+\begin{figure}[h]
+    \begin{center}
+        \input{centerOfMassSystem.pdf_tex}
+    \end{center}
+\end{figure}
+\\上図より、重心系での位置$\vec{R_1}$,$\vec{R_2}$は実験室系での位置$\vec{r_1}$,$\vec{r_2}$を用いて、
+{\large
+\begin{align*}
+    \vec{R_1} & =\vec{r_1}-\vec{r_G} & \vec{R_2} & =\vec{r_2}-\vec{r_G}
+    \\&=\vec{r_1}-\frac{m_1\vec{r_1}+m_2\vec{r_2}}{m_1+m_2} & &=\vec{r_2}-\frac{m_1\vec{r_1}+m_2\vec{r_2}}{m_1+m_2}
+    \\&=\frac{m_2}{m_1+m_2}\left(\vec{r_1}-\vec{r_2}\right) & &=-\frac{m_1}{m_1+m_2}\left(\vec{r_1}-\vec{r_2}\right)
+\end{align*}
+}
+と表される。速度、加速度についても同様の関係が成り立つ。つまり、{\bf 重心系において2物体の位置・速度・加速度は、互いに逆向きで質量の逆比になる}ことがわかる。
+これは次のように考えることもできる。
+重心系において、重心は座標原点に静止しているので、
+\begin{equation}
+    m_1\vec{R_1}+m_2\vec{R_2}=\vec{0}\quad\Leftrightarrow\quad\vec{R_1}=-\frac{m_2}{m_1}\vec{R_2}
+\end{equation}
+となり、同じ結論を得る。
+\\\\重心系での$m_1$,$m_2$の運動方程式を考えてみる。しかし、(7)式より$m_2$の運動は$m_1$の運動の実数倍で表せるので、$m_1$のみに注目する。
+重心系における$m_1$の運動方程式は、重心の加速度による慣性力を考慮して、
+{\large
+\begin{equation}
+    m_1\frac{d^2\vec{R_1}}{dt^2}=\vec{f_1}+\vec{F}-\underset{\text{慣性力}}{\boxed{m_1\frac{d^2\vec{r_G}}{dt^2}}}
+\end{equation}
+}
+となる。ここで、
+{\large\begin{align*}
+     & m_1\frac{d^2\vec{R_1}}{dt^2}=\vec{f_1}+\vec{F}-m_1\frac{d^2\vec{r_G}}{dt^2}
+    \\&\Leftrightarrow m_1\frac{d^2}{dt^2}\left\{\frac{m_2}{m_1+m_2}\left(\vec{r_1}-\vec{r_2}\right)\right\}=\vec{f_1}+\vec{F}-m_1\left(\frac{\vec{f_1}}{m_1+m_2}+\frac{\vec{f_2}}{m_1+m_2}\right)(\because(3))
+    \\&\Leftrightarrow(5)
+\end{align*}
+}
+なので、{\bf 重心系で運動方程式を考えることは、実験室系で相対運動方程式を考えることと等しい}ことが分かる。
+\\\\次に重心系での2物体の運動エネルギーの和を考えてみると、
+{\large
+\begin{align*}
+     & \frac{1}{2}m_1 V_1^2+\frac{1}{2}m_2V_2^2
+    \\&=\frac{1}{2}m_1\left|\vec{v_1}-\vec{v_G}\right|^2+\frac{1}{2}m_2\left|\vec{v_2}-\vec{v_G}\right|^2
+    \\&=\left(\frac{1}{2}m_1 v_1^2+\frac{1}{2}m_2v_2^2\right)+\frac{1}{2}(m_1+m_2)v_G^2-\left(m_1\vec{v_1}+m_2\vec{v_2}\right)\cdot\vec{v_G}
+    \\&=\left(\frac{1}{2}Mv_G^2+\frac{1}{2}\mu v_r^2\right)+\frac{1}{2}Mv_G^2-\underbrace{(m_1+m_2)\left|\frac{m_1\vec{v_1}+m_2\vec{v_2}}{m_1+m_2}\right|^2}_{=Mv_G^2}
+    \\&=\frac{1}{2}\mu v_r^2
+\end{align*}
+}
+となり、{\bf 重心系での2物体の運動エネルギーの和は実験室系での相対運動エネルギーと等しい}ことが分かる。
+\end{document}
